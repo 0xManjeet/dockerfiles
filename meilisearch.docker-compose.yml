@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  meilisearch:
+    image: getmeili/meilisearch:v1.12.0-rc.4
+    ports:
+      - "${MSEARCH_PORT}:7700"
+    environment:
+      - MEILI_MASTER_KEY=${MEILI_MASTER_KEY}
+    volumes:
+      - /backups/msearch/${SNAME}:/meili_data
+    restart: unless-stopped
